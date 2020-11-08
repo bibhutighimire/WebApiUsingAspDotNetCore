@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using static WebApiUsingCore.Models.Employees;
 
 namespace WebApiUsingCore.Controllers
 {
     public class EmployeeController : Controller
     {
-        public IActionResult Index()
-        {
-            string url = string.Format("https://emplistapi-258220.appspot.com");
-            List<MyArray> emp = null;
-            using (WebClient client = new WebClient())
+          
+            public async Task<IActionResult> Index()
             {
-                string json = client.DownloadString(url);
-                emp = (new JavaScriptSerializer()).Deserialize<List<EmployeeViewModel>>(json);
-
+                List<MyArray> employees = new List<MyArray>();
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync("https://emplistapi-258220.appspot.com"))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                    employees = JsonConvert.DeserializeObject<List<MyArray>>(apiResponse);
+                    }
+                }
+                return View(employees);
             }
-            return View(emp);
-        }
     }
 }

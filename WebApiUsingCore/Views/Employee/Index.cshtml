@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebApiUsingCore.Models.Employees.MyArray>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+           
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name.first) @Html.DisplayFor(modelItem => item.name.last)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jobTitle) 
+            </td>
+            <td>
+              <img src="@Html.DisplayFor(modelItem => item.photoURL)" alt="employee"/>  
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
