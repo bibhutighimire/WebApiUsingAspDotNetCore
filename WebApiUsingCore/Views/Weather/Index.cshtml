@@ -1,0 +1,44 @@
+﻿@model WebApiUsingCore.Models.Weather.Example
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Visiblity</th>
+            <th>Temperature</th>
+            <th>Clouds</th>
+
+        </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+            <td>
+                @Model.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.visibility)
+            </td>
+
+            <td>
+                @Model.main.temp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.clouds.all)
+            </td>
+            @*<td>
+            <img src="@Html.DisplayFor(modelItem => item.icon)" alt="employee" />
+        </td>*@
+        </tr>
+       
+    </tbody>
+</table>
