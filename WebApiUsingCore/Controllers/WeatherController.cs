@@ -34,8 +34,6 @@ namespace WebApiUsingCore.Controllers
                 //var mainDetails=jsonstring.;
                 return View(jsonstring);
             }
-
-
         }
     }
 }
