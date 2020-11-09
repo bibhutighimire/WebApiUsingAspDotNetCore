@@ -1,30 +1,28 @@
 ﻿@model IEnumerable<WebApiUsingCore.Models.News.Article>
-
+<link rel="stylesheet" href="~/css/news.css" />
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Health News of Canada</h1>
+<div class="row">
+    @foreach (var item in Model)
+    {
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.author)
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <div class="leftcolumnNews">
+            <div class="cardNews">
+                <h2>@Html.DisplayFor(modelItem => item.title)</h2>
+                <h5>Author:  @Html.DisplayFor(modelItem => item.author)</h5>
+                <h5> Date: @Html.DisplayFor(modelItem => item.publishedAt)</h5>
+
+
+                <p> @Html.DisplayFor(modelItem => item.description)</p>
+                <p> @Html.DisplayFor(modelItem => item.content)</p>
+                <a href=" @Html.DisplayFor(modelItem => item.url)" target="_blank" >Click here to read more..</a>
+                <p> Source: @Html.DisplayFor(modelItem => item.source.name)</p>
+            </div>
+            <div class="fakeimg"><img src="@Html.DisplayFor(modelItem => item.urlToImage)" alt="imageofcontent" /></div>
+        </div>
+
+    }
+</div>

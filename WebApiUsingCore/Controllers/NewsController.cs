@@ -24,7 +24,7 @@ namespace WebApiUsingCore.Controllers
                 var jsonstring = JsonConvert.DeserializeObject<Example>(json);
 
                 var a = jsonstring.articles;
-                //List<Article> lst = a;
+                
                 return View(a);
             }
 

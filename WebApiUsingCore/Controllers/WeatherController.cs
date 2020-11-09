@@ -12,20 +12,30 @@ namespace WebApiUsingCore.Controllers
 {
     public class WeatherController : Controller
     {
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public IActionResult Index()
         {
-            
-        string url = string.Format("http://api.openweathermap.org/data/2.5/weather?q=edmonton&units=metric&cnt=1&APPID=8113fcc5a7494b0518bd91ef3acc074f");
 
-                   
-        using (WebClient client = new WebClient())
-        {
-            string json = client.DownloadString(url);
-            var jsonstring = JsonConvert.DeserializeObject<Example>(json);   
-            return View(jsonstring);
+            return View();
+
+
         }
-            
-          
+        [HttpPost]
+        public async Task<IActionResult> IndexPost(Example e)
+        {
+
+            string url = string.Format("http://api.openweathermap.org/data/2.5/weather?q={0}&units=metric&cnt=1&APPID=8113fcc5a7494b0518bd91ef3acc074f", e.name);
+
+
+            using (WebClient client = new WebClient())
+            {
+                string json = client.DownloadString(url);
+                var jsonstring = JsonConvert.DeserializeObject<Example>(json);
+                //var mainDetails=jsonstring.;
+                return View(jsonstring);
+            }
+
+
         }
     }
 }

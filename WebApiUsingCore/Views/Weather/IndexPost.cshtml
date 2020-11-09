@@ -1,0 +1,57 @@
+﻿@model WebApiUsingCore.Models.Weather.Example
+
+@{
+    ViewData["Title"] = "IndexPost";
+}
+
+<h1>IndexPost</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                Country: @Model.sys.country
+            </td>
+        </tr>
+        <tr>
+            <td>
+                City: @Model.name
+            </td>
+        </tr>
+        <tr>
+            <td>
+               Temperature: @Model.main.temp
+            </td>
+        </tr>
+        <tr>
+            <td>
+               Feels Like:  @Model.main.feels_like
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              Wind Speed:   @Model.wind.speed
+            </td>
+        </tr>
+        @*<tr>
+            <td>
+                @Model.temp_max
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Model.wind.speed
+            </td>
+        </tr>*@
+
+    </tbody>
+</table>
