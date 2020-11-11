@@ -1,0 +1,16 @@
+﻿.box {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+.boxSmall {
+    width:200px;
+    border:1px solid gray;
+    padding:7px;
+    margin:7px;
+    border-radius:8px;
+    background-color:lightgray;
+    color:black;
+}
